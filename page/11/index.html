@@ -1,0 +1,508 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="crazykay">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/15/free-call/" title="免费拨打网络电话" itemprop="url">
+  
+    <h1 itemprop="name">免费拨打网络电话</h1>
+    
+     
+       <p itemprop="description" >从买CD到免费下载歌曲，从买DVD到免费看视频，从买报纸到免费看资讯……是时候到免费通话了！
+
+
+时至今日，互联网已经如此的发达，我们的通讯费用还十分高昂。有一些方式可以帮助我们通过联网获得免费的实时通话或语音留言：QQ 语音/视频，微信，飞信，YY 等等。这个方式的缺点是：双方</p>
+      
+    
+    <time datetime="2013-10-15T02:05:03.000Z" itemprop="datePublished">10月 15 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/14/macbook-air-wifi-share/" title="Macbook Air 分享网络" itemprop="url">
+  
+    <h1 itemprop="name">Macbook Air 分享网络</h1>
+    
+     
+       <p itemprop="description" >大家知道，Air 十分轻薄，没办法做网络插口，同时 air 的概念也意味着一切通过无线连接。这样的话，上网只能连接 wifi。
+另一方面，BIT 现在上网是限流量的，10元10G，且一个帐号最多允许两个设备同时登录。我宿舍的无线路由器一般保持登录状态，so，在教室或实验室，Mac</p>
+      
+    
+    <time datetime="2013-10-14T02:02:07.000Z" itemprop="datePublished">10月 14 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/12/8-female/" title="话剧《八美图》：婚外恋、同性恋、不伦恋" itemprop="url">
+  
+    <h1 itemprop="name">话剧《八美图》：婚外恋、同性恋、不伦恋</h1>
+    
+     
+       <p itemprop="description" >今天晚上，校话剧团在新食堂四楼表演话剧《八美图》，又称《八个女人》，其电影版本已于去年发行。现场坐满了人，两旁还挤挤地站着观众，可以看到，大家还是蛮期待的。舞台已经布置完毕，桌椅道具一应俱全。7点30，正式开始。
+话剧讲述一个法国的大家庭，成员有爸爸、妈妈、姨妈、外婆、女儿苏珊、</p>
+      
+    
+    <time datetime="2013-10-12T12:59:45.000Z" itemprop="datePublished">10月 12 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/12/on-pirate/" title="关于盗版" itemprop="url">
+  
+    <h1 itemprop="name">关于盗版</h1>
+    
+     
+       <p itemprop="description" >首先，我交待主要的盗版经历。</p>
+      
+    
+    <time datetime="2013-10-12T02:56:26.000Z" itemprop="datePublished">10月 12 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/08/change-for-change/" title="学不下去？换个环境！" itemprop="url">
+  
+    <h1 itemprop="name">学不下去？换个环境！</h1>
+    
+     
+       <p itemprop="description" >为了督促自己保持良好的状态，我从昨天开始执行新制定的「30天行动计划」，内容、方式与假期时的「100天行动计划」差不多。假期中，通过这个行动计划，我没有堕落进游戏、睡觉、发呆中，尽管效率未必多高、效果未必多好，但还是保持了很强的学习热情，零零碎碎学到了不少东西。
+来到学校，研究生</p>
+      
+    
+    <time datetime="2013-10-08T14:31:01.000Z" itemprop="datePublished">10月 8 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/06/osx-update-and-ipv6-configure/" title="Mac升级Lion到Mavericks" itemprop="url">
+  
+    <h1 itemprop="name">Mac升级Lion到Mavericks</h1>
+    
+     
+       <p itemprop="description" >最近苹果放出了 Mavericks GM，也就是正式版之前的最后一个版本。有开发者提取了系统安装文件，并放在网上分享。目前用的比较多的有两个版本：
+ 一个是全新安装版（迅雷快传）
+ 另一个是升级安装版（百度网盘）
+我是从10.8.5升级到 Mavericks GM(10.9)，为</p>
+      
+    
+    <time datetime="2013-10-06T05:23:41.000Z" itemprop="datePublished">10月 6 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/05/xue-ba-down/" title="「学霸模式」已死机" itemprop="url">
+  
+    <h1 itemprop="name">「学霸模式」已死机</h1>
+    
+     
+       <p itemprop="description" >下午回到学校，拖拖拉拉到晚饭，之后与同学来到空无一人的实验室，暗下决心，一个月的浑噩生活该做休止了。
+决心很有力量，期盼很美好，真正着手开始学习的时候就傻了。五六门专业课都需要看课件/课本，Python 需要继续学习，书签栏 Readitlater中的收藏网页还没看，一堆的事情。</p>
+      
+    
+    <time datetime="2013-10-05T12:22:15.000Z" itemprop="datePublished">10月 5 2013</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" href="/page/12/">Next &raquo;</a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>2</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>21</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>15</sup></a></li>
+		
+			<li><a href="/categories/人物/" title="人物">人物<sup>2</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>4</sup></a></li>
+		
+			<li><a href="/categories/思维记忆/" title="思维记忆">思维记忆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>24</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>41</sup></a></li>
+		
+			<li><a href="/categories/电影/" title="电影">电影<sup>25</sup></a></li>
+		
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>29</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/100天/" title="100天">100天<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Dreamworks/" title="Dreamworks">Dreamworks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GOT/" title="GOT">GOT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OS/" title="OS">OS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PCA/" title="PCA">PCA<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TED/" title="TED">TED<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cms/" title="cms">cms<sup>1</sup></a></li>
+		
+			<li><a href="/tags/coursera/" title="coursera">coursera<sup>5</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>10</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/k-means/" title="k-means">k-means<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="" title="Crazyfeng's Blog">Crazy Feng</a></li>
+</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+
+
+  </body>
+ </html>

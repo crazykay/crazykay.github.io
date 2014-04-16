@@ -1,0 +1,579 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>关于阅读英文文档的一点想法 | crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="学习编程免不了阅读英文文档，每种编程技术都会有一个官方文档，这是每个技术人员都要学会使用的东西，既全面又正式。
+早前学习python的时候，看了《Learn Python the Hard Way》，虽然看完了，但不太爽，个人不太喜欢这种散漫式的教程，而是偏喜欢中国教科书那种归纳好的形式。这几天开始狠心踏实地学python，计划阅读官方的原始Tutorial和标准库参考。找到了一个翻译文档，入门教程部分已经翻译完毕，标准参考库基本还是原封未动。我规定自己每天看一两章中文版的入门教程和一两章英文版的标准参考库。可是看过之后，我感觉这种方式不太合适。中文版本的翻译质量堪忧，很多语句都不通顺，看起来比较费劲，而且由于官方文档的正式特点，看起来非常枯燥。英文的参考文档，由于本来就对很多概念不理解，文档中又频繁遇到这样的术语，这样的话，虽然看过去了，但理解的程度也不深。这个方法不好使。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/08/08/reading-docs/" title="关于阅读英文文档的一点想法" itemprop="url">关于阅读英文文档的一点想法</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="crazykay.github.io" title="crazykay">crazykay</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2013-08-08T14:14:03.000Z" itemprop="datePublished">8月 8 2013</time>
+    更新日期:<time datetime="2014-04-15T04:58:30.000Z" itemprop="dateModified">4月 15 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p>学习编程免不了阅读英文文档，每种编程技术都会有一个官方文档，这是每个技术人员都要学会使用的东西，既全面又正式。</p>
+<p>早前学习python的时候，看了《Learn Python the Hard Way》，虽然看完了，但不太爽，个人不太喜欢这种散漫式的教程，而是偏喜欢中国教科书那种归纳好的形式。这几天开始狠心踏实地学python，计划阅读官方的原始Tutorial和标准库参考。找到了一个<a href="https://docspy3zh.readthedocs.org/en/latest/tutorial/index.html" target="_blank">翻译文档</a>，入门教程部分已经翻译完毕，标准参考库基本还是原封未动。我规定自己每天看一两章中文版的入门教程和一两章英文版的标准参考库。可是看过之后，我感觉这种方式不太合适。中文版本的翻译质量堪忧，很多语句都不通顺，看起来比较费劲，而且由于官方文档的正式特点，看起来非常枯燥。英文的参考文档，由于本来就对很多概念不理解，文档中又频繁遇到这样的术语，这样的话，虽然看过去了，但理解的程度也不深。这个方法不好使。</p>
+<a id="more"></a>
+
+<p>昨天在搜索一个问题的时候又发现一个非常不错的文档（其实早前就收藏过，当时没空看，后来就忘了），《Dive into Python》第三版，啄木鸟社区翻译的中文版本。看了一下目录，又挑了一节进去看了看，非常喜欢这种形式。看了几章了，边看边练习边做笔记，很感激这本书。这本书的好处有这几个：</p>
+<ul>
+<li>中文翻译的很顺畅、很地道、很幽默、很好玩（当然，最主要归功于原作者的写作风格）</li>
+<li>啄木鸟社区技术文档的展示形式简洁优美，漂亮的阅读界面也有利于学习。</li>
+<li>作者对很多重要却容易忽视的知识点给予特别的提醒。</li>
+<li>例子典型好用，解释详细，作者能很好地把握读者什么时候想知道什么。</li>
+<li>讲解的顺序跟官方文档有很大的不同，以需求为导向。</li>
+</ul>
+<p>对于原版的官方文档，我想应该这样使用：先了解文档的格式，不必现在就详细阅读，只要知道怎么阅读一个详细的知识点就行；初期先使用比较亲民的教程，等熟练一点、对python的基本知识已经掌握需要提升的时候再看官方文档，不仅应该，而且合适。</p>
+<p>题外话：DNSPod刚刚密集提醒我博客网站宕机，我登录了一下没问题，不知道怎么回事。</p>
+<hr>
+<p>爱打卡-100days-第72天-0011</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="crazykay.github.io/2013/08/08/reading-docs/" data-title="关于阅读英文文档的一点想法 | crazykay&#39;s page" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/08/09/love-is-dangerous/" title="爱情有坑，立入禁止">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  爱情有坑，立入禁止</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/08/07/vim-start/"  title="开启vim模式">
+ <strong>NEXT:</strong><br/> 
+ <span>开启vim模式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+    <!--<div class="ds-thread"></div>-->
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-category="$cat[catid]" data-thread-key="$article[aid]" data-title="$article[title]" data-author-key="$article[uid]"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"crazykay"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>2</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>21</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>15</sup></a></li>
+		
+			<li><a href="/categories/人物/" title="人物">人物<sup>2</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>4</sup></a></li>
+		
+			<li><a href="/categories/思维记忆/" title="思维记忆">思维记忆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>24</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>41</sup></a></li>
+		
+			<li><a href="/categories/电影/" title="电影">电影<sup>25</sup></a></li>
+		
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>29</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/100天/" title="100天">100天<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Dreamworks/" title="Dreamworks">Dreamworks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GOT/" title="GOT">GOT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OS/" title="OS">OS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PCA/" title="PCA">PCA<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TED/" title="TED">TED<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cms/" title="cms">cms<sup>1</sup></a></li>
+		
+			<li><a href="/tags/coursera/" title="coursera">coursera<sup>5</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>10</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/k-means/" title="k-means">k-means<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="" title="Crazyfeng's Blog">Crazy Feng</a></li>
+</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>

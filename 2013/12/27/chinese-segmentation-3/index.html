@@ -1,0 +1,676 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>中文分词（三） | crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="《中文分词（一）》
+《中文分词（二）》
+《中文分词（三）》
+
+承接上文《中文分词（二）》，本篇是最后一篇，介绍使用基于 HMM 的 Viterbi 算法做中文分词。
+Viterbi 算法
+了解 HMM（隐马尔可夫模型）的朋友都知道 HMM 这个模型可以用五元组表示：
+1
+2
+3
+4
+5
+（states，//状态空间
+observations，//观察空间
+start_probability，//状态的初始分布
+transition_probability，//状态的转移概率矩阵
+emission_probability）//状态产生观察的概率">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/12/27/chinese-segmentation-3/" title="中文分词（三）" itemprop="url">中文分词（三）</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="crazykay.github.io" title="crazykay">crazykay</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2013-12-27T14:43:57.000Z" itemprop="datePublished">12月 27 2013</time>
+    更新日期:<time datetime="2014-04-15T04:58:30.000Z" itemprop="dateModified">4月 15 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Viterbi_算法"><span class="toc-number">1.</span> <span class="toc-text">Viterbi 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用_Viterbi_算法做中文分词"><span class="toc-number">2.</span> <span class="toc-text">用 Viterbi 算法做中文分词</span></a></li></ol>
+		</div>
+		
+		<ul>
+<li><a href="http://zipperary.com/2013/12/25/chinese-segmentation/" target="_blank">《中文分词（一）》</a></li>
+<li><a href="http://zipperary.com/2013/12/27/chinese-segmentation-2/" target="_blank">《中文分词（二）》</a></li>
+<li><a href="http://zipperary.com/2013/12/27/chinese-segmentation-3/" target="_blank">《中文分词（三）》</a></li>
+</ul>
+<p>承接上文<a href="http://zipperary.com/2013/12/27/chinese-segmentation-2/" target="_blank">《中文分词（二）》</a>，本篇是最后一篇，介绍使用基于 HMM 的 Viterbi 算法做中文分词。</p>
+<h3 id="Viterbi_算法">Viterbi 算法</h3>
+<p>了解 HMM（隐马尔可夫模型）的朋友都知道 HMM 这个模型可以用五元组表示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>（states，<span class="comment">//状态空间</span>
+observations，<span class="comment">//观察空间</span>
+start_probability，<span class="comment">//状态的初始分布</span>
+transition_probability，<span class="comment">//状态的转移概率矩阵</span>
+emission_probability）<span class="comment">//状态产生观察的概率</span>
+</pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>举个例子：</p>
+<p>『想象一个乡村诊所。村民有着非常理想化的特性，要么健康要么发烧。他们只有问诊所的医生的才能知道是否发烧。 聪明的医生通过询问病人的感觉诊断他们是否发烧。村民只回答他们感觉正常、头晕或冷。</p>
+<p>假设一个病人每天来到诊所并告诉医生他的感觉。医生相信病人的健康状况如同一个离散马尔可夫链。病人的状态有两种“健康”和“发烧”，但医生不能直接观察到，这意味着状态对他是“隐含”的。每天病人会告诉医生自己有以下几种由他的健康状态决定的感觉的一种：正常、冷或头晕。这些是观察结果。 整个系统为一个隐马尔可夫模型(HMM)。</p>
+<p>医生知道村民的总体健康状况，还知道发烧和没发烧的病人通常会抱怨什么症状。 换句话说，医生知道隐马尔可夫模型的参数。 』</p>
+<p>这里给出该 HMM 的五元组值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre>states = (<span class="string">'Healthy'</span>, <span class="string">'Fever'</span>)
+ 
+observations = (<span class="string">'normal'</span>, <span class="string">'cold'</span>, <span class="string">'dizzy'</span>)
+ 
+start_probability = {<span class="string">'Healthy'</span>: <span class="number">0.6</span>, <span class="string">'Fever'</span>: <span class="number">0.4</span>}
+ 
+transition_probability = {
+   <span class="string">'Healthy'</span> : {<span class="string">'Healthy'</span>: <span class="number">0.7</span>, <span class="string">'Fever'</span>: <span class="number">0.3</span>},
+   <span class="string">'Fever'</span> : {<span class="string">'Healthy'</span>: <span class="number">0.4</span>, <span class="string">'Fever'</span>: <span class="number">0.6</span>},
+   }
+ 
+emission_probability = {
+   <span class="string">'Healthy'</span> : {<span class="string">'normal'</span>: <span class="number">0.5</span>, <span class="string">'cold'</span>: <span class="number">0.4</span>, <span class="string">'dizzy'</span>: <span class="number">0.1</span>},
+   <span class="string">'Fever'</span> : {<span class="string">'normal'</span>: <span class="number">0.1</span>, <span class="string">'cold'</span>: <span class="number">0.3</span>, <span class="string">'dizzy'</span>: <span class="number">0.6</span>},
+   }
+</pre></td></tr></table></figure>
+
+<p>上述五元组及其含义，可以用下图形象表示：</p>
+<p><img src="http://ww1.sinaimg.cn/large/5e8cb366jw1ebynhgilr0j20de0e5js4.jpg" alt=""></p>
+<p>模型已经建立，那么问题来了：『病人连续三天看医生，医生发现第一天他感觉正常，第二天感觉冷，第三天感觉头晕。 于是医生产生了一个问题：怎样的健康状态序列最能够解释这些观察结果？』</p>
+<p>实际上，在我之前的文章<a href="http://zipperary.com/2013/10/17/3-problems-in-hmm/" target="_blank">《隐马尔可夫模型三个问题的求解(一)》</a>中就做过介绍，刚才提出的那个问题，正是 HMM 三大基本问题之一：根据观察序列，求隐藏状态序列。</p>
+<p><strong>我们总结一下目前的已知条件和待求解问题：</strong></p>
+<p>已知：观察结果 [‘normal’, ‘cold’, ‘dizzy’]  + 如图三个参数。</p>
+<p><img src="http://ww4.sinaimg.cn/large/5e8cb366jw1ebynmdilkcj20cn04lgm1.jpg" alt=""></p>
+<p>求：最有可能由状态序列？ （如[‘Healthy’, ‘Healthy’, ‘Fever’]）</p>
+<p>求解就用到了 Viterbi 算法，具体的过程请参考52NLP 的<a href="http://www.52nlp.cn/hmm-learn-best-practices-six-viterbi-algorithm-2" target="_blank">文章</a>，讲的非常好。另外，刚才上面的例子，我借用的是<a href="http://zh.wikipedia.org/wiki/%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95" target="_blank">维基百科</a>。</p>
+<p>到此，Viterbi 算法就能把隐藏状态序列求解出来了。</p>
+<p>那么，怎样把这厮应用到中文分词呢？</p>
+<h3 id="用_Viterbi_算法做中文分词">用 Viterbi 算法做中文分词</h3>
+<p>一切的算法应用问题，都是把现实问题抽象化，并向算法要解决的问题模型靠拢。</p>
+<p>问题模型是什么？HMM。HMM有上面讲过的五个参数，我们要一一对应。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>（states，<span class="comment">//状态空间：{B,E,M,S}，稍后介绍</span>
+observations，<span class="comment">//观察空间：所有汉字组成的集合。</span>
+start_probability，<span class="comment">//状态的初始分布</span>
+transition_probability，<span class="comment">//状态的转移概率矩阵</span>
+emission_probability）<span class="comment">//状态产生观察的概率</span>
+</pre></td></tr></table></figure>
+
+<p><strong>介绍下{B,E,M,S}：</strong></p>
+<p>汉字按照BEMS四个状态来标记，分别代表 Begin End Middle 和 Single，比如：</p>
+<p>北京（BE），中华民族（BMME），有意见分歧（SBEBE）</p>
+<p>用这四个状态符号依次标记输入句子中的字，便可轻松得到分词方案。 如：</p>
+<p>观察序列：我是一个中国人<br>状态序列：SSBEBME</p>
+<p>对于上面的状态序列，根据简单的固定的规则进行组合划分，得到 S/S/BE/BEM/</p>
+<p>对应于观察序列：我/是/一个/中国人/</p>
+<p>分词任务就完成了。</p>
+<p>而后面的三个参数，也可以通过对语料库的统计得到，比如结巴分词中给出的是：</p>
+<p><img src="http://ww2.sinaimg.cn/large/5e8cb366jw1ebyo4y4cv1j20jo06nq3t.jpg" alt=""></p>
+<p>已知：观察序列S，初始状态概率prob_start，状态观察发射概率prob_emit，状态转换概率prob_trans。 求状态序列W。</p>
+<p>用上面提到的 Viterbi 算法，可以求出 W，也就得到分词方案了。</p>
+<p>至此，关于中文分词就介绍完了。有兴趣的同学欢迎交流。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="crazykay.github.io/2013/12/27/chinese-segmentation-3/" data-title="中文分词（三） | crazykay&#39;s page" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/12/29/summary-of-2013/" title="2013年末总结">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  2013年末总结</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/12/27/chinese-segmentation-2/"  title="中文分词（二）">
+ <strong>NEXT:</strong><br/> 
+ <span>中文分词（二）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+    <!--<div class="ds-thread"></div>-->
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-category="$cat[catid]" data-thread-key="$article[aid]" data-title="$article[title]" data-author-key="$article[uid]"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"crazykay"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Viterbi_算法"><span class="toc-number">1.</span> <span class="toc-text">Viterbi 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用_Viterbi_算法做中文分词"><span class="toc-number">2.</span> <span class="toc-text">用 Viterbi 算法做中文分词</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>2</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>21</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>15</sup></a></li>
+		
+			<li><a href="/categories/人物/" title="人物">人物<sup>2</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>4</sup></a></li>
+		
+			<li><a href="/categories/思维记忆/" title="思维记忆">思维记忆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>24</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>41</sup></a></li>
+		
+			<li><a href="/categories/电影/" title="电影">电影<sup>25</sup></a></li>
+		
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>29</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/100天/" title="100天">100天<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Dreamworks/" title="Dreamworks">Dreamworks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GOT/" title="GOT">GOT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OS/" title="OS">OS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PCA/" title="PCA">PCA<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TED/" title="TED">TED<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cms/" title="cms">cms<sup>1</sup></a></li>
+		
+			<li><a href="/tags/coursera/" title="coursera">coursera<sup>5</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>10</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/k-means/" title="k-means">k-means<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="" title="Crazyfeng's Blog">Crazy Feng</a></li>
+</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>

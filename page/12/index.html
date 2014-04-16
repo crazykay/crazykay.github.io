@@ -1,0 +1,505 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="crazykay">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/04/qq-for-mac-video/" title="QQ for Mac无法视频通话的解决办法" itemprop="url">
+  
+    <h1 itemprop="name">QQ for Mac无法视频通话的解决办法</h1>
+    
+     
+       <p itemprop="description" >问题描述
+OSX 升级到10.8.5之后，QQ 进行视频通话时，总提示「检测不到摄像头…」，自己电脑的摄像头无法打开，但可以看到对方的视频；而 facetime 和 Photobooth 都可以正常使用。
+腾讯提供的解决方法
+根据腾讯的解释，这是由于新的 OSX 系统里面，摄像头</p>
+      
+    
+    <time datetime="2013-10-04T03:52:42.000Z" itemprop="datePublished">10月 4 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/10/03/zhui-ji-zhe/" title="电影《追击者》" itemprop="url">
+  
+    <h1 itemprop="name">电影《追击者》</h1>
+    
+     
+       <p itemprop="description" >目前看过的所有韩国电影，几乎没有烂片，也许是因为我的有意选择性，也许根本是因为韩国电影水平的确不低。之前在微博上看到好几个人推荐这部电影，心想肯定差不了，于是便下载了。昨天在长途站候车时打开看了一会，情节是皮条客和应召女的事，由于候车室挤满了人，我怕出现敏感镜头危害公共心理健康，</p>
+      
+    
+    <time datetime="2013-10-03T09:05:20.000Z" itemprop="datePublished">10月 3 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/09/29/hello,mac/" title="Hello,Mac!" itemprop="url">
+  
+    <h1 itemprop="name">Hello,Mac!</h1>
+    
+     
+       <p itemprop="description" >26号在苹果团支付、下单购买了 Macbook Air 13存2013年中标配版，顺丰还算给力，28号的中午就到了学校。要的是香港原封产品，所有费用包括 MBA（6600）、苹果团提利润（180）、顺丰运费（50），共计6830软妹币，比官方的「7988」便宜了大概1000，而且</p>
+      
+    
+    <time datetime="2013-09-29T10:53:53.000Z" itemprop="datePublished">9月 29 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/09/25/secondary-proxy/" title="教你设置二级代理" itemprop="url">
+  
+    <h1 itemprop="name">教你设置二级代理</h1>
+    
+     
+           <p itemprop="description" >之前在《悄悄告诉你》一文中提到过校园中用代理绕过计费系统上网的方法。这个trick让我窃喜了一阵子，但实际上有个问题没有解决：无法再使用vpn或Goagent代理翻墙。于是这些天我在使用Google时不时地抹眼泪，不翻墙的日子太憋屈了！
+痛定思痛，既然已经尝试过各种可以想到的办法</p>
+        
+    
+    <time datetime="2013-09-25T09:01:45.000Z" itemprop="datePublished">9月 25 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/09/19/mid-autumn/" title="中秋快乐" itemprop="url">
+  
+    <h1 itemprop="name">中秋快乐</h1>
+    
+     
+       <p itemprop="description" >我其实挺害怕周末和过节，同学们都出去玩了，我也很难安心学习，又觉得出去玩挺没意思的（尤其是没有妹子），所以就比较尴尬了。
+昨晚和另外一个没有计划的舍友商量怎么打发这个节日，舍友非常随和，很快就同意了我的提议：徒步去国图看书，然后乘地铁去798看展览。
+话说时光陡然转到今天早晨，在</p>
+      
+    
+    <time datetime="2013-09-19T13:27:19.000Z" itemprop="datePublished">9月 19 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/09/18/android-apps/" title="安卓应用推荐" itemprop="url">
+  
+    <h1 itemprop="name">安卓应用推荐</h1>
+    
+     
+       <p itemprop="description" >安卓手机刚刚走进中国市场的时候，我和周围的同学就开始使用，一直到现在，陪伴安卓从2.3走到4.3，看到安卓自身的变化以及给世界带来的巨变，衷心感激安卓拓展了我的认知范围，给我的生活带来了许许多多的便利。这里就推荐（或曰列举）一下我手机里使用的APP。由于大脑容量和质量有限，几乎不</p>
+      
+    
+    <time datetime="2013-09-18T09:04:08.000Z" itemprop="datePublished">9月 18 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/09/15/2-weeks-here/" title="开学两周间" itemprop="url">
+  
+    <h1 itemprop="name">开学两周间</h1>
+    
+     
+       <p itemprop="description" >这些天一直没更新博客，实在想念这个地方了，今晚无论如何也要写点东西，生拼硬凑也要写。
+我们学校一个奇葩的地方是来了两周都还没有上课，明天周一才开始。这两周间除了零星办理一些学校相关的程序事务，基本上都是靠网络活过来。对于我来说，一来学习的氛围不浓、兴趣也不大，二来也给自己找了一个</p>
+      
+    
+    <time datetime="2013-09-15T15:06:34.000Z" itemprop="datePublished">9月 15 2013</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" href="/page/13/">Next &raquo;</a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>2</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>21</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>15</sup></a></li>
+		
+			<li><a href="/categories/人物/" title="人物">人物<sup>2</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>4</sup></a></li>
+		
+			<li><a href="/categories/思维记忆/" title="思维记忆">思维记忆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>24</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>41</sup></a></li>
+		
+			<li><a href="/categories/电影/" title="电影">电影<sup>25</sup></a></li>
+		
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>29</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/100天/" title="100天">100天<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Dreamworks/" title="Dreamworks">Dreamworks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GOT/" title="GOT">GOT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OS/" title="OS">OS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PCA/" title="PCA">PCA<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TED/" title="TED">TED<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cms/" title="cms">cms<sup>1</sup></a></li>
+		
+			<li><a href="/tags/coursera/" title="coursera">coursera<sup>5</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>10</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/k-means/" title="k-means">k-means<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="" title="Crazyfeng's Blog">Crazy Feng</a></li>
+</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+
+
+  </body>
+ </html>

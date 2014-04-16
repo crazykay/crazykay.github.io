@@ -1,0 +1,652 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>中文分词（一） | crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="《中文分词（一）》
+《中文分词（二）》
+《中文分词（三）》
+
+这两天忙 NLP 课程的大作业，我们组的题目是「中文分词」，要求是可以使用任何现有的资料，我们采用的是@TeapDB 的结巴分词，项目主页是：https://github.com/fxsjy/jieba 。
+今晚刚刚做完 presentation，不知不觉在台上扯了四十分钟，在空调吹暖气烤的屋里出了一身的汗。汗还没干，把内容整理一下：
+为什么要进行中文分词？
+
+词是最小的能够独立活动的有意义的语言成分。
+
+汉语是以字为基本的书写单位，词语之间没有明显的区分标记。
+
+正确分词是中文信息处理的基础与关键。
+
+
+中文分词的难点
+
+交集型歧义：结婚的和尚未结婚的   =&gt;结婚／的／和／尚未／结婚／的结婚／的／和尚／未／结婚／的  
+
+OOV(Out of Vocabulary)识别：云计算、创新办、好用">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/12/25/chinese-segmentation/" title="中文分词（一）" itemprop="url">中文分词（一）</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="crazykay.github.io" title="crazykay">crazykay</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2013-12-25T12:49:20.000Z" itemprop="datePublished">12月 25 2013</time>
+    更新日期:<time datetime="2014-04-15T04:58:30.000Z" itemprop="dateModified">4月 15 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要进行中文分词？"><span class="toc-number">1.</span> <span class="toc-text">为什么要进行中文分词？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中文分词的难点"><span class="toc-number">2.</span> <span class="toc-text">中文分词的难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于规则的分词：最大匹配"><span class="toc-number">3.</span> <span class="toc-text">基于规则的分词：最大匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于统计的分词"><span class="toc-number">4.</span> <span class="toc-text">基于统计的分词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示"><span class="toc-number">5.</span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于_DAG_和_Dict_的中文分词"><span class="toc-number">6.</span> <span class="toc-text">基于 DAG 和 Dict 的中文分词</span></a></li></ol>
+		</div>
+		
+		<ul>
+<li><a href="http://zipperary.com/2013/12/25/chinese-segmentation/" target="_blank">《中文分词（一）》</a></li>
+<li><a href="http://zipperary.com/2013/12/27/chinese-segmentation-2/" target="_blank">《中文分词（二）》</a></li>
+<li><a href="http://zipperary.com/2013/12/27/chinese-segmentation-3/" target="_blank">《中文分词（三）》</a></li>
+</ul>
+<p>这两天忙 NLP 课程的大作业，我们组的题目是「中文分词」，要求是可以使用任何现有的资料，我们采用的是@TeapDB 的<strong>结巴分词</strong>，项目主页是：<a href="https://github.com/fxsjy/jieba" target="_blank">https://github.com/fxsjy/jieba</a> 。</p>
+<p>今晚刚刚做完 presentation，不知不觉在台上扯了四十分钟，在空调吹暖气烤的屋里出了一身的汗。汗还没干，把内容整理一下：</p>
+<h3 id="为什么要进行中文分词？">为什么要进行中文分词？</h3>
+<ul>
+<li><p>词是最小的能够独立活动的有意义的语言成分。</p>
+</li>
+<li><p>汉语是以字为基本的书写单位，词语之间没有明显的区分标记。</p>
+</li>
+<li><p>正确分词是中文信息处理的基础与关键。</p>
+</li>
+</ul>
+<h3 id="中文分词的难点">中文分词的难点</h3>
+<ol>
+<li><p>交集型歧义：<br>结婚的和尚未结婚的   =&gt;<br>结婚／的／和／尚未／结婚／的<br>结婚／的／和尚／未／结婚／的  </p>
+</li>
+<li><p>OOV(Out of Vocabulary)识别：<br>云计算、创新办、好用</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="基于规则的分词：最大匹配">基于规则的分词：最大匹配</h3>
+<p>e.g. “南京市长江大桥”</p>
+<p>词典的最大词长是5</p>
+<p><strong>正向最大匹配：</strong>从左向右，依次扫描。比如”南”，扫描前5个，”南京市长江”，词典中并没有这个词；扫描前4个，”南京市长”，词典中有这个词，Okay。然后从”江”开始，后面一共就剩3个了，但词典中木有，那么缩短，”江大”，也木有，只能是”江”了。依次继续，可以得到”大桥”。最后我们就得到了按照正向最大匹配得到的词序：</p>
+<p>南京市长/江/大桥</p>
+<p><strong>逆向最大匹配：</strong>我们都知道，中文的重心一般在后面，所以按照从右向左的扫描方式，取得的效果会更好一些。分词的方式跟上面是一样的，除了扫描顺序。最后得到的词序是：</p>
+<p>南京市/长江大桥</p>
+<h3 id="基于统计的分词">基于统计的分词</h3>
+<ol>
+<li>基于 DAG(有向无环图)和 Dict(词典)的中文分词。</li>
+<li>基于HMM的 Viterbi 算法</li>
+</ol>
+<p>结巴分词正是使用这种思想。该分词程序的<strong>主要功能</strong>有：</p>
+<ul>
+<li><strong>分词</strong></li>
+<li>关键词提取：TF/IDF</li>
+<li>词性标注（pos）</li>
+<li>Tokenize：返回词语在原文的起始位置</li>
+</ul>
+<p><strong>代码</strong>有：</p>
+<ul>
+<li>Python 版，作者所写</li>
+<li>C++</li>
+<li>Java</li>
+</ul>
+<p>后两种为其他人做的 commit。</p>
+<p>程序的<strong>性能</strong>：</p>
+<ul>
+<li>1.5 MB / Second in Full Mode</li>
+<li>400 KB / Second in Default Mode</li>
+<li>Test Env: Intel(R) Core(TM) i7-2600 CPU @ 3.4GHz；《围城》.txt</li>
+</ul>
+<h3 id="演示">演示</h3>
+<p>输入文本： “这是一个伸手不见五指的黑夜。我叫孙悟空，我爱北京，我爱Python和C++。”</p>
+<p>程序执行结果：</p>
+<p><img src="http://ww4.sinaimg.cn/large/5e8cb366jw1ebw9jdi6mjj20k00egwg1.jpg" alt=""></p>
+<h3 id="基于_DAG_和_Dict_的中文分词">基于 DAG 和 Dict 的中文分词</h3>
+<p>分词步骤：</p>
+<ol>
+<li>根据 dict 生成 trie，提高词典查询速度</li>
+<li>文本预处理，生成中文短语</li>
+<li>生成词图（DAG），并求最大概率路径</li>
+</ol>
+<p>咦，文章不短了，马上下课，今天先到这儿，明天继续！</p>
+<p><em>附我 Presentation 的 ppt： <a href="http://pan.baidu.com/s/1jG1DcFk" target="_blank">点我下载</a></em></p>
+<p>Merry Christmas!</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="crazykay.github.io/2013/12/25/chinese-segmentation/" data-title="中文分词（一） | crazykay&#39;s page" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/12/27/chinese-segmentation-2/" title="中文分词（二）">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  中文分词（二）</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/12/22/lotr/"  title="《指环王》三部曲：一、The Fellowship of the Rings">
+ <strong>NEXT:</strong><br/> 
+ <span>《指环王》三部曲：一、The Fellowship of the Rings
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+    <!--<div class="ds-thread"></div>-->
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-category="$cat[catid]" data-thread-key="$article[aid]" data-title="$article[title]" data-author-key="$article[uid]"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"crazykay"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要进行中文分词？"><span class="toc-number">1.</span> <span class="toc-text">为什么要进行中文分词？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中文分词的难点"><span class="toc-number">2.</span> <span class="toc-text">中文分词的难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于规则的分词：最大匹配"><span class="toc-number">3.</span> <span class="toc-text">基于规则的分词：最大匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于统计的分词"><span class="toc-number">4.</span> <span class="toc-text">基于统计的分词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示"><span class="toc-number">5.</span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于_DAG_和_Dict_的中文分词"><span class="toc-number">6.</span> <span class="toc-text">基于 DAG 和 Dict 的中文分词</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>2</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>21</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>3</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>15</sup></a></li>
+		
+			<li><a href="/categories/人物/" title="人物">人物<sup>2</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>4</sup></a></li>
+		
+			<li><a href="/categories/思维记忆/" title="思维记忆">思维记忆<sup>1</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>24</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>41</sup></a></li>
+		
+			<li><a href="/categories/电影/" title="电影">电影<sup>25</sup></a></li>
+		
+			<li><a href="/categories/读书笔记/" title="读书笔记">读书笔记<sup>29</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/100天/" title="100天">100天<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Dreamworks/" title="Dreamworks">Dreamworks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GOT/" title="GOT">GOT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OS/" title="OS">OS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PCA/" title="PCA">PCA<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/TED/" title="TED">TED<sup>1</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cms/" title="cms">cms<sup>1</sup></a></li>
+		
+			<li><a href="/tags/coursera/" title="coursera">coursera<sup>5</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>10</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/k-means/" title="k-means">k-means<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="" title="Crazyfeng's Blog">Crazy Feng</a></li>
+</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
