@@ -1,0 +1,476 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" content="crazykay">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/05/27/domain-name-and-dns/" title="购买域名、设置DNS" itemprop="url">
+  
+    <h1 itemprop="name">购买域名、设置DNS</h1>
+    
+     
+       <p itemprop="description" >博客搭建好之后就一直想买个域名，这几天在考虑域名和后缀的选择问题。后缀好说，首选.com，次选.me或.net。至于域名，由于本名拼音（zhaowei）和博名（zipperary）都已经被注册，只好另外构思。最终选择了zipperary.com这个域名。想法来源于library这</p>
+      
+    
+    <time datetime="2013-05-27T13:47:55.000Z" itemprop="datePublished">5月 27 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/05/26/ssh-errors-with-github/" title="Git push时重复输入用户名密码的问题" itemprop="url">
+  
+    <h1 itemprop="name">Git push时重复输入用户名密码的问题</h1>
+    
+     
+       <p itemprop="description" >在windows上使用git来push到github服务器的时候，每次都需要填写用户名/邮箱、密码，很麻烦。最近用hexo写博客，需要频繁地进行博客配置和预览，而每次预览执行hexo deploy都需要输入用户名、密码验证，不胜其烦，今天下决心解决。
+尽管github提供了SSH</p>
+      
+    
+    <time datetime="2013-05-26T11:48:49.000Z" itemprop="datePublished">5月 26 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/05/22/introduction-to-markdown/" title="Markdown指南" itemprop="url">
+  
+    <h1 itemprop="name">Markdown指南</h1>
+    
+     
+       <p itemprop="description" >前几天学习了markdown，然后一直在用，很喜欢这种格式即内容的写作形式。在简书写了几篇，对固定链接的格式很不满意，于是寻找能够支持markdown、固定链接显格式、支持自定义域名的博客平台。Github是个很好的选择，在折腾完Jekyll和Octopress几近筋疲力尽的时候</p>
+      
+    
+    <time datetime="2013-05-22T15:11:05.000Z" itemprop="datePublished">5月 22 2013</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2013/05/22/hexo-starts/" title="开始使用hexo博客" itemprop="url">
+  
+    <h1 itemprop="name">开始使用hexo博客</h1>
+    
+     
+       <p itemprop="description" >最近一直在选择一个适合自己的博客平台，把旧博文挪过去，新博文也在此开垦。了解和尝试了很多博客，最终看到了hexo，很简单的配置、很漂亮的主题很实用的功能。下面记录一下其他考虑过的博客的缺点（优点不必说了，存在即有合理性）。</p>
+      
+    
+    <time datetime="2013-05-22T12:40:10.000Z" itemprop="datePublished">5月 22 2013</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>9</sup></a></li>
+		
+			<li><a href="/categories/编程算法/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>10</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>3</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		
+			<li><a href="/categories/编程算法/" title="编程算法">编程算法<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>11</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>3</sup></a></li>
+		
+			<li><a href="/tags/node.js/" title="node.js">node.js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vim/" title="vim">vim<sup>3</sup></a></li>
+		
+			<li><a href="/tags/信息图/" title="信息图">信息图<sup>1</sup></a></li>
+		
+			<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
+		
+			<li><a href="/tags/博客/" title="博客">博客<sup>8</sup></a></li>
+		
+			<li><a href="/tags/域名/" title="域名">域名<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10.00px;">CSS</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 10.00px;">Java</a><a href="/tags/Python/" style="font-size: 11.67px;">Python</a><a href="/tags/bae/" style="font-size: 10.00px;">bae</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/dns/" style="font-size: 11.67px;">dns</a><a href="/tags/flickr/" style="font-size: 10.00px;">flickr</a><a href="/tags/github/" style="font-size: 10.00px;">github</a><a href="/tags/google/" style="font-size: 10.00px;">google</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/hexo theme/" style="font-size: 10.00px;">hexo theme</a><a href="/tags/jQuery/" style="font-size: 10.00px;">jQuery</a><a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a><a href="/tags/node.js/" style="font-size: 10.00px;">node.js</a><a href="/tags/vim/" style="font-size: 13.33px;">vim</a><a href="/tags/信息图/" style="font-size: 10.00px;">信息图</a><a href="/tags/加密/" style="font-size: 10.00px;">加密</a><a href="/tags/博客/" style="font-size: 18.33px;">博客</a><a href="/tags/域名/" style="font-size: 10.00px;">域名</a><a href="/tags/干货/" style="font-size: 10.00px;">干货</a><a href="/tags/异常处理/" style="font-size: 10.00px;">异常处理</a><a href="/tags/教程/" style="font-size: 16.67px;">教程</a><a href="/tags/正则表达式/" style="font-size: 10.00px;">正则表达式</a><a href="/tags/源码/" style="font-size: 10.00px;">源码</a><a href="/tags/爬虫/" style="font-size: 15.00px;">爬虫</a><a href="/tags/福利/" style="font-size: 10.00px;">福利</a><a href="/tags/算法/" style="font-size: 10.00px;">算法</a><a href="/tags/面试/" style="font-size: 10.00px;">面试</a><a href="/tags/音乐/" style="font-size: 10.00px;">音乐</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://www.google.com" target="_blank" title="Google">Google</a></li>
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+ Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-50333835-1', 'github.com');
+ga('send', 'pageview');
+
+</script>
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor:
+pointer;">
+<a title="返回顶部"><img src="/img/top.gif"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+  </body>
+ </html>

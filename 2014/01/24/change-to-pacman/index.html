@@ -1,0 +1,617 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>折腾了个Pacman主题 | crazykay&#39;s page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="crazykay">
+    
+    <meta name="description" itemprop="description" content="Pacman是一款为Hexo打造的一款扁平化，有着响应式设计的主题。采用Stylus重新设计，在Chrome，Firefox，Sarifa，iOS和Android上都表现非常完美。而我以前的主题一到手机端就长残了，不说了。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="crazykay&#39;s page" title="crazykay&#39;s page"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="crazykay&#39;s page">crazykay&#39;s page</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:crazykay.github.io">
+					</form>
+					
+					</li>
+					<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/01/24/change-to-pacman/" title="折腾了个Pacman主题" itemprop="url">折腾了个Pacman主题</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="crazykay.github.io" title="crazykay">crazykay</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-01-24T08:21:55.000Z" itemprop="datePublished">1月 24 2014</time>
+    更新日期:<time datetime="2014-04-18T17:36:43.000Z" itemprop="dateModified">4月 19 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主题介绍"><span class="toc-number">1.</span> <span class="toc-text">主题介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题截图"><span class="toc-number">2.</span> <span class="toc-text">主题截图</span></a></li></ol>
+		</div>
+		
+		<p>更换主题确实是一个非常耗体力的活，但是自从看到了<a href="http://yangjian.me/workspace/introducing-pacman-theme/" target="_blank">Pacman</a>主题后，就萌发了换主题的冲动。不过Pacman的第一版主题用起来有很大问题，而且从半年前就不更新了。放弃之后也找遍所有可用主题，都不如所愿。所幸的是，就在上个星期，发现pacman开始更新了，所有的css也都采用<a href="http://learnboost.github.io/stylus/" target="_blank">Stylus</a>重写了（原来作者闭关半年在憋大招啊）。遂下载之，发现用起来非常方便。</p>
+<h2 id="主题介绍">主题介绍</h2>
+<p>扯了这么多，无非就是说这主题多么多么屌。确实，Pacman是一款为<a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>打造的一款扁平化，有着响应式设计的主题。在Chrome，Firefox，Sarifa，iOS和Android上都表现非常完美。而我以前的主题一到手机端就长残了，不说了… 至于Pacman主题在IE端会看到意想不到的景象我是不会告诉你们的。还是那句话「珍爱前端程序员生命，请远离IE」。</p>
+<p>而且，基于模块化的思想，所有的组件都成了可配置的了，如果你不像我有「审美洁癖」的话，只需要配置主题目录下的<code>_config.yml</code>文件，添加对应组件的账号或ID即可。</p>
+<p>而我在使用pacman的过程中，主要修改了文章的样式，code的样式，主题颜色，组件的排版，在一些地方使用了font来显示矢量图标等等。对于改过之后的主题，看官请轻拍，所谓「萝卜青菜，各有所爱」嘛。</p>
+<h2 id="主题截图">主题截图</h2>
+<p>上几张iPhone端的博客截图。<br><img src="/img/20140124-1.jpg" alt=""></p>
+<p>最后留念下上一个主题<a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">paperbox</a>。<br><img src="/img/20140124-2.png" alt=""></p>
+<p>鸣谢：<a href="http://yangjian.me/" target="_blank">Yangjian</a><br>更多介绍：<a href="http://yangjian.me/workspace/introducing-pacman-theme/" target="_blank">Pacman主题介绍</a><br>GitHub链接：<a href="https://github.com/A-limon/pacman" target="_blank">pacman</a></p>
+<p>-EOF-</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/博客/">博客</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="crazykay.github.io/2014/01/24/change-to-pacman/" data-title="折腾了个Pacman主题 | crazykay&#39;s page" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/01/27/python-spider-gif/" title="Python爬虫：暴走漫画上的GIF趣图">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Python爬虫：暴走漫画上的GIF趣图</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/01/08/hexo-scrollup/"  title="Hexo博客优化：添加返回顶部功能">
+ <strong>NEXT:</strong><br/> 
+ <span>Hexo博客优化：添加返回顶部功能
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+    <!--<div class="ds-thread"></div>-->
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-category="$cat[catid]" data-thread-key="$article[aid]" data-title="$article[title]" data-author-key="$article[uid]"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"crazykay"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主题介绍"><span class="toc-number">1.</span> <span class="toc-text">主题介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题截图"><span class="toc-number">2.</span> <span class="toc-text">主题截图</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/English/" title="English">English<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/IT杂谈/" title="IT杂谈">IT杂谈<sup>9</sup></a></li>
+		
+			<li><a href="/categories/编程算法/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>19</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/python/" title="python">python<sup>10</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/推荐/" title="推荐">推荐<sup>1</sup></a></li>
+		
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>3</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		
+			<li><a href="/categories/编程算法/" title="编程算法">编程算法<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bae/" title="bae">bae<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/dns/" title="dns">dns<sup>2</sup></a></li>
+		
+			<li><a href="/tags/flickr/" title="flickr">flickr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/google/" title="google">google<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>11</sup></a></li>
+		
+			<li><a href="/tags/hexo theme/" title="hexo theme">hexo theme<sup>1</sup></a></li>
+		
+			<li><a href="/tags/jQuery/" title="jQuery">jQuery<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>3</sup></a></li>
+		
+			<li><a href="/tags/node.js/" title="node.js">node.js<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vim/" title="vim">vim<sup>3</sup></a></li>
+		
+			<li><a href="/tags/信息图/" title="信息图">信息图<sup>1</sup></a></li>
+		
+			<li><a href="/tags/加密/" title="加密">加密<sup>1</sup></a></li>
+		
+			<li><a href="/tags/博客/" title="博客">博客<sup>8</sup></a></li>
+		
+			<li><a href="/tags/域名/" title="域名">域名<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10.00px;">CSS</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/Java/" style="font-size: 10.00px;">Java</a><a href="/tags/Python/" style="font-size: 11.67px;">Python</a><a href="/tags/bae/" style="font-size: 10.00px;">bae</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/dns/" style="font-size: 11.67px;">dns</a><a href="/tags/flickr/" style="font-size: 10.00px;">flickr</a><a href="/tags/github/" style="font-size: 10.00px;">github</a><a href="/tags/google/" style="font-size: 10.00px;">google</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/hexo theme/" style="font-size: 10.00px;">hexo theme</a><a href="/tags/jQuery/" style="font-size: 10.00px;">jQuery</a><a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a><a href="/tags/node.js/" style="font-size: 10.00px;">node.js</a><a href="/tags/vim/" style="font-size: 13.33px;">vim</a><a href="/tags/信息图/" style="font-size: 10.00px;">信息图</a><a href="/tags/加密/" style="font-size: 10.00px;">加密</a><a href="/tags/博客/" style="font-size: 18.33px;">博客</a><a href="/tags/域名/" style="font-size: 10.00px;">域名</a><a href="/tags/干货/" style="font-size: 10.00px;">干货</a><a href="/tags/异常处理/" style="font-size: 10.00px;">异常处理</a><a href="/tags/教程/" style="font-size: 16.67px;">教程</a><a href="/tags/正则表达式/" style="font-size: 10.00px;">正则表达式</a><a href="/tags/源码/" style="font-size: 10.00px;">源码</a><a href="/tags/爬虫/" style="font-size: 15.00px;">爬虫</a><a href="/tags/福利/" style="font-size: 10.00px;">福利</a><a href="/tags/算法/" style="font-size: 10.00px;">算法</a><a href="/tags/面试/" style="font-size: 10.00px;">面试</a><a href="/tags/音乐/" style="font-size: 10.00px;">音乐</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://www.google.com" target="_blank" title="Google">Google</a></li>
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="crazykay.github.io" target="_blank" title="crazykay">crazykay</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+ Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-50333835-1', 'github.com');
+ga('send', 'pageview');
+
+</script>
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor:
+pointer;">
+<a title="返回顶部"><img src="/img/top.gif"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+  </body>
+</html>
